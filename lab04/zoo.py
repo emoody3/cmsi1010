@@ -15,11 +15,11 @@ def show_animals():
 
 #petting the animal of your choice
 def pet_animal(animal):
-    if animal == "Clover":
+    if animal == "clover":
         print("Clover is so happy! ❤️")
-    elif animal == "Coco":
+    elif animal == "coco":
         print("Coco the Baby Goat thanks you! 🥰")
-    elif animal == "Arno":
+    elif animal == "arno":
         print("Actually, we cannot allow you to pet Arno. ⛔️")
     else:
         print("Sorry, I don't know that animal")
@@ -32,11 +32,11 @@ def pet_animal(animal):
 
 keep_going = True
 #intro to the program
+print("Welcome to the Petting Zoo!")
+print("Type 'help' to get a list of all the things you can do! \n")
 while keep_going:
-    print("Welcome to the Petting Zoo!")
-    print("Type 'help' to get a list of all the things you can do! \n")
 
-    response = input("What would you like to do? ")
+    response = input("What would you like to do? ").strip().lower()
     if response == "help":
         show_help()
     elif response == "see":
