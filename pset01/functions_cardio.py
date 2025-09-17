@@ -28,7 +28,7 @@ def print_square(n):
     ***
     ***
     """
-    for count in range(1, n+1):
+    for count in range(n):
         print("*" * n)
     
 
@@ -46,13 +46,12 @@ def median_of_three(a, b, c):
     Return the median of three numbers a, b, and c.
     """
     # replace the pass statement with your code
-    if a > b:
-        if b > c:
-            return b
-        elif c > a:
-            return a
-    else:
+    if (a > b > c) or (c > b > a):
         return b
+    elif (a > c > b) or (b > c > a):
+        return c
+    else:
+        return a
 
 def is_palindrome(s):
     """
@@ -63,7 +62,7 @@ def is_palindrome(s):
     reversal.
     """
     # replace the pass statement with your code
-    pass
+    return s[:] == s[::-1]
 
 
 def factorial(n):
@@ -75,11 +74,14 @@ def factorial(n):
     function with a for loop.
     """
     # replace the pass statement with your code
+    if n == 0:
+        return 1
+    
     factorial = n
-    for i in range(0, n):
-        factorial = factorial * (n-1)
+    for i in range(n-1):
+        factorial *= (n-1)
         n -= 1
-    print(factorial)
+    return factorial
 
 
 def count_of_latin_vowels(s):
@@ -90,7 +92,13 @@ def count_of_latin_vowels(s):
     function using a for loop to iterate through the string.
     """
     # replace the pass statement with your code
-    pass
+    vowels = ["a", "e", "i", "o", "u"]
+    num_vowels = 0
+    for letter in s:
+        if letter.lower() in vowels:
+            num_vowels += 1
+    return num_vowels
+            
 
 
 def at_beginning_or_end(part, whole):
@@ -98,7 +106,11 @@ def at_beginning_or_end(part, whole):
     Return True if the part is a prefix or a suffix of whole.
     """
     # replace the pass statement with your code
-    pass
+    length_part = len(part)
+    if part in whole[:length_part+1] or part in whole[len(whole)-length_part:]:
+        return True
+    else:
+        return False
 
 
 def longest_string(strings):
@@ -109,7 +121,17 @@ def longest_string(strings):
     the first one encountered.
     """
     # replace the pass statement with your code
-    pass
+    length = len(strings[0])
+    long_word = strings[0]
+    for value in strings:
+        if len(value) > length:
+            length = len(value)
+            long_word = value
+
+    return long_word
+
+    
+        
 
 
 def collatz(n):
@@ -122,8 +144,14 @@ def collatz(n):
     - The sequence ends when it reaches 1.
     """
     # replace the pass statement with your code
-    pass
-
+    sequence = [n]
+    while n != 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3*n + 1
+        sequence.append(n)
+    return sequence
 
 def test_print_square():
     import io
