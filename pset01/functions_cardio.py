@@ -38,7 +38,7 @@ def is_odd(n):
     Return True if n is odd, False otherwise.
     """
     # replace the pass statement with your code
-    pass
+    return n % 2 == 1
 
 
 def median_of_three(a, b, c):
@@ -46,8 +46,13 @@ def median_of_three(a, b, c):
     Return the median of three numbers a, b, and c.
     """
     # replace the pass statement with your code
-    pass
-
+    if a > b:
+        if b > c:
+            return b
+        elif c > a:
+            return a
+    else:
+        return b
 
 def is_palindrome(s):
     """
@@ -70,7 +75,11 @@ def factorial(n):
     function with a for loop.
     """
     # replace the pass statement with your code
-    pass
+    factorial = n
+    for i in range(0, n):
+        factorial = factorial * (n-1)
+        n -= 1
+    print(factorial)
 
 
 def count_of_latin_vowels(s):
