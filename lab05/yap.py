@@ -6,7 +6,7 @@ words = {
     "preposition": ["through", "over", "under", "beyond", "across"],
     "adverb": ["barely", "mostly", "easily", "already", "just", "quickly", "almost"],
     "color": ["pink", "blue", "mauve", "red", "transparent", "clear", "turqouise", "lavender"],
-    "greeting" : ["yo", "hello", "greetings", "what's up", "hey"]
+    "greeting": ["yo", "hello", "greetings", "what's up", "hey"]
 }
 
 template = ["""
@@ -18,6 +18,8 @@ template = ["""
     verb preposition my mother's 
     adjective color noun that happened to
     adverb verb yesterday"""]
+
+
 def random_sentence():
     sentence = []
     for token in random.choice(template).split():
