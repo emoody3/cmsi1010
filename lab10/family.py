@@ -1,4 +1,5 @@
 class Person:
+    # in python tradition, the first parameter of classes should always be "self" ~ keep the tradition up
     # this is how we create the instances
     def __init__(self, name, born=None, died=None, mom=None, dad=None):
         self.name = name
@@ -6,6 +7,13 @@ class Person:
         self.died = died
         self.mom = mom
         self.dad = dad
+
+    # code to test if two people are siblings (half or full) or not
+
+    def is_sibling_of(self, other):
+        same_mom = self.mom is not None and other.mom is not None and self.mom is other.mom
+        same_dad = self.dad is not None and other.dad is not None and self.dad is other.dad
+        return same_mom or same_dad
 
     # this is how we make it so its nice for us to print later
     def __str__(self):
@@ -61,10 +69,14 @@ salvatore = Person("Salvatore Riggitano", born="1876",
 louis = Person("Louis Prevost", born="1920",
                died="1997", mom=suzanne, dad=salvatore)
 leo = Person("Robert Prevost", born="1955", mom=mildred, dad=louis)
+adele = Person("Adele Martinez", mom=marie, dad=jacques)
 
 
 print(marie)
 print(julie)
+print(adele.is_sibling_of(joseph))  # should be true
+print(joseph.is_sibling_of(adele))  # should be true
+print(salvatore.is_sibling_of(louise))  # should be false
 
 # A function that appears within a class is called a method! If it isn't within a class, its just a function.
 # python doesn't know how to print out custom types. We have to show python how to do it
