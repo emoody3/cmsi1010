@@ -13,6 +13,8 @@ pygame.display.set_caption("K'tah Game")
 clock = pygame.time.Clock()
 font = pygame.freetype.SysFont('sans', 100)
 font_health = pygame.freetype.SysFont('sans', 20)
+
+# part of superpowers
 frozen = False
 UNFREEZE = pygame.USEREVENT + 1
 scarecrow = None
@@ -90,6 +92,11 @@ def draw_scene():
     player.move_towards(pygame.mouse.get_pos())
     if not frozen:
         for zombie in zombies:
+            '''if scarecrow:
+                zombie.move_towards(scarecrow)
+            else:
+                zombie.move_towards((player.x, player.y))'''
+            # another way to do it ^ (more advanced)
             target = scarecrow or (player.x, player.y)
             zombie.move_towards(target)
     # helps you update your world before you apply a drawing to it
@@ -102,7 +109,6 @@ def draw_scene():
                           "HEALTH:" + str(player.health), (255, 0, 0))
     if scarecrow is not None:
         pygame.draw.circle(screen, (255, 200, 0), scarecrow, 20)
-    # font.render_to(screen, (WIDTH-20, HEIGHT-20), "HEALTH", (255, 0, 0))
     pygame.display.flip()
 
 
@@ -130,7 +136,7 @@ while True:
                     frozen = True
                     pygame.time.set_timer(UNFREEZE, 5000, loops=1)
             elif event.key == pygame.K_s:
-                if scarecrow is None:
+                if not scarecrow:
                     scarecrow = (player.x, player.y)
                     pygame.time.set_timer(REMOVE_SCARECROW, 5000, loops=1)
 
