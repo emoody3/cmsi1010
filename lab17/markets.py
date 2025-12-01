@@ -64,7 +64,6 @@ def plot_market_histogram():
 
 
 # when computer scientists work with data, there are so many patterns that they have created libraries to help make these tasks simpler
-
 plot_market_histogram()
 # print(market_counts_by_state())
 
